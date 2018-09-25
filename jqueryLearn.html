@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+</head>
+
+<body>
+    <ul>
+        <li id="item1">1</li>
+        <li id="item2">2</li>
+        <li id="item3">3</li>
+        <li id="item4">4</li>
+        <li id="item5">5</li>
+    </ul>
+
+    <script>
+        var log = console.log.bind(console)
+        function getSiblings(node) {
+            var allChildren = node.parentNode.children
+            var array = {
+                length: 0
+            }
+            for (let i = 0; i < allChildren.length; i++) {
+                if (allChildren[i] !== node) {
+                    array[array.length] = allChildren[i]
+                    array.length += 1
+                }
+            }
+            return array
+        }
+
+
+        function fixClass(node, classes) {
+            for(let key in classes) {
+                if(classes[key]){
+                    node.classList.add(key)
+                } else {
+                    node.classList.remove(key)
+                }
+            }
+            // classes.forEach(value => node.classList.add(value))
+        }
+    </script>
+</body>
+</html>
