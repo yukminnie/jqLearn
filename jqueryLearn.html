@@ -17,13 +17,13 @@
 
     <script>
         var log = console.log.bind(console)
-        function getSiblings(node) {
-            var allChildren = node.parentNode.children
+        Node.prototype.getSiblings = function() {
+            var allChildren = this.parentNode.children
             var array = {
                 length: 0
             }
             for (let i = 0; i < allChildren.length; i++) {
-                if (allChildren[i] !== node) {
+                if (allChildren[i] !== this) {
                     array[array.length] = allChildren[i]
                     array.length += 1
                 }
@@ -32,10 +32,11 @@
         }
 
 
-        function fixClass(node, classes) {
-            classes.forEach(value => node.classList.add(value))
+        Node.prototype.fixClass = function(classes) {
+            classes.forEach(value => this.classList.add(value))
         }
-        fixClass(item3, {a, b, c})
+        item4.getSiblings()
+        item3.fixClass(['a', 'b', 'c'])
     </script>
 </body>
 </html>
