@@ -34,14 +34,12 @@
 
         function fixClass(node, classes) {
             for(let key in classes) {
-                if(classes[key]){
-                    node.classList.add(key)
-                } else {
-                    node.classList.remove(key)
-                }
+                var methodName = classes[key] ? 'add' : 'remove'
+                node.classList.methodName(key)
             }
             // classes.forEach(value => node.classList.add(value))
         }
+        fixClass(item3, {a: true, b: false, c: true})
     </script>
 </body>
 </html>
