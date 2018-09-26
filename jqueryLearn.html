@@ -39,7 +39,13 @@
         // item4.getSiblings()
         // item3.fixClass(['a', 'b', 'c'])
 
-        window.Node2 = function(node) {
+        window.jQuery = function(nodeOrSelector) {
+            let node
+            if (typeof nodeOrSelector === 'string') {
+                node = document.querySelector(nodeOrSelector)
+            } else {
+                node = nodeOrSelector
+            }
             return {
                 getSiblings: function() {
                     var allChildren = node.parentNode.children
@@ -62,7 +68,7 @@
             }
         }
 
-        var node2 = Node2(item3)
+        var node2 = jQuery('ul > li:nth-child(3)')
         node2.getSiblings()
         node2.fixClass(['a', 'b', 'c'])
         // mmdom = {}
