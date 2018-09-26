@@ -17,27 +17,54 @@
 
     <script>
         var log = console.log.bind(console)
-        Node.prototype.getSiblings = function() {
-            var allChildren = this.parentNode.children
-            var array = {
-                length: 0
-            }
-            for (let i = 0; i < allChildren.length; i++) {
-                if (allChildren[i] !== this) {
-                    array[array.length] = allChildren[i]
-                    array.length += 1
+        // Node.prototype.getSiblings = function() {
+        //     var allChildren = this.parentNode.children
+        //     var array = {
+        //         length: 0
+        //     }
+        //     for (let i = 0; i < allChildren.length; i++) {
+        //         if (allChildren[i] !== this) {
+        //             array[array.length] = allChildren[i]
+        //             array.length += 1
+        //         }
+        //     }
+        //     return array
+        // }
+        //
+        //
+        // Node.prototype.fixClass = function(classes) {
+        //     classes.forEach(value => this.classList.add(value))
+        // }
+        //
+        // item4.getSiblings()
+        // item3.fixClass(['a', 'b', 'c'])
+
+        window.Node2 = function(node) {
+            return {
+                getSiblings: function() {
+                    var allChildren = node.parentNode.children
+
+                    var array = {
+                        length: 0
+                    }
+
+                    for (let i = 0; i< allChildren.length; i++) {
+                        if (allChildren[i] !== node) {
+                            array[array.length] = allChildren[i]
+                            array.length += 1
+                        }
+                    }
+                    return array
+                },
+                fixClass: function(classes) {
+                    classes.forEach(value => node.classList.add(value))
                 }
             }
-            return array
         }
 
-
-        Node.prototype.fixClass = function(classes) {
-            classes.forEach(value => this.classList.add(value))
-        }
-        item4.getSiblings()
-        item3.fixClass(['a', 'b', 'c'])
-
+        var node2 = Node2(item3)
+        node2.getSiblings()
+        node2.fixClass(['a', 'b', 'c'])
         // mmdom = {}
         // mmdom.fixClass = fixClass
         // mmdom.getSiblings = getSiblings
